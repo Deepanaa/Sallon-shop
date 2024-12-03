@@ -69,14 +69,6 @@ Cuttify leverages a range of technologies to provide a robust and efficient salo
   - AWS EC2 for deployment ![AWS EC2](https://img.icons8.com/color/48/000000/amazon-web-services.png)
 
 
-## Team Members
-
-The development of Cuttify was made possible by the dedicated efforts of The Alphas team:
-
-- [Akil Sadik M H](https://github.com/AKILSADIK)
-- [Aparna R](https://github.com/Aparna-Rama)
-- [Aswini R](https://github.com/AswiniRavi27)
-- [Monishasri N P](https://github.com/MONISHASRI12)
 
 ## Getting Started
 
