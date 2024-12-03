@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/page2.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>The Barber Show</h2>
+        </div>
+        <div class="chat-message-list" id="chatMessageList">
+            <!-- Chat messages will be added here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Message...">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('sendButton').addEventListener('click', function() {
+            var input = document.getElementById('chatInput');
+            var messageList = document.getElementById('chatMessageList');
+
+            if (input.value) {
+                // Create a new div element for the chat message
+                var newMessage = document.createElement('div');
+                newMessage.textContent = input.value;
+                newMessage.classList.add('chat-message');
+
+                // Add the new message to the chat message list
+                messageList.appendChild(newMessage);
+
+                // Clear the input field
+                input.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

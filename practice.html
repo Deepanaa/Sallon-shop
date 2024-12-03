@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Salon Cards</title>
+    <style>
+     
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 10px;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 100px;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: center;
+    
+}
+
+.card-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.card-rating i {
+    color: #ffc107;
+    margin-right: 5px;
+}
+
+.card-rating span {
+    margin-left: 5px;
+}
+
+.card h2 {
+    margin: 10px 0;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.card-location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.card-location i {
+    color: orange;
+    margin-right: 5px;
+}
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card-actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.card-actions button i {
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.card-actions button i:first-child {
+    display: none;
+}
+
+.card-actions button i:last-child {
+    display: block;
+}
+
+.card-actions button:focus i:first-child,
+.card-actions button:active i:first-child {
+    display: block;
+}
+
+.card-actions button:focus i:last-child,
+.card-actions button:active i:last-child {
+    display: none;
+}
+
+.card-actions button:focus,
+.card-actions button:active {
+    color: #007bff;
+}
+
+.card-actions button:focus:not(:first-child),
+.card-actions button:active:not(:first-child) {
+    color: #333;
+}
+
+.save-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.save-btn i {
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.save-btn i:first-child {
+    display: block;
+}
+
+.save-btn i:last-child {
+    display: none;
+}
+
+.save-btn:focus i:first-child,
+.save-btn:active i:first-child {
+    display: none;
+}
+
+.save-btn:focus i:last-child,
+.save-btn:active i:last-child {
+    display: block;
+}
+
+.save-btn:focus,
+.save-btn:active {
+    color: #007bff;
+}
+
+.save-btn:focus:not(:last-child),
+.save-btn:active:not(:last-child) {
+    color: #333;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="card">
+            <div class="card-image">
+                <img src="logos1.png" alt="Salon 1">
+            </div>
+            <div class="card-content">
+                <div class="card-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.5/5</span>
+                </div>
+                <h2>Glow hair care Salon</h2>
+                <div class="card-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>1.5 km away</span>
+                </div>
+                <div class="card-actions">
+                    <button class="save-btn">
+                        <i class="fas fa-bookmark"></i>
+                        <i class="far fa-bookmark"></i>
+                    </button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image">
+                <img src="logo2.avif" alt="Salon 2">
+            </div>
+            <div class="card-content">
+                <div class="card-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span>4/5</span>
+                </div>
+                <h2>Sage rituals</h2>
+                <div class="card-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>2.2 km away</span>
+                </div>
+                <div class="card-actions">
+                    <button class="save-btn">
+                        <i class="fas fa-bookmark"></i>
+                        <i class="far fa-bookmark"></i>
+                    </button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image">
+                <img src="logo3.avif" alt="Salon 3">
+            </div>
+            <div class="card-content">
+                <div class="card-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span>4/5</span>
+                </div>
+                <h2>Fancy nails spa</h2>
+                <div class="card-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>2.8 km away</span>
+                </div>
+                <div class="card-actions">
+                    <button class="save-btn">
+                        <i class="fas fa-bookmark"></i>
+                        <i class="far fa-bookmark"></i>
+                    </button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image">
+                <img src="logo4.avif" alt="Salon 4">
+            </div>
+            <div class="card-content">
+                <div class="card-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.5/5</span>
+                </div>
+                <h2>Karma hair studio</h2>
+                <div class="card-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>1.8 km away</span>
+                </div>
+                <div class="card-actions">
+                    <button class="save-btn">
+                        <i class="fas fa-bookmark"></i>
+                        <i class="far fa-bookmark"></i>
+                    </button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+              <img src="logo5.avif" alt="Salon 4">
+          </div>
+          <div class="card-content">
+              <div class="card-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+                  <span>3.5/5</span>
+              </div>
+              <h2>Salon Ocen hair&nails</h2>
+              <div class="card-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>1 km away</span>
+              </div>
+              <div class="card-actions">
+                  <button class="save-btn">
+                      <i class="fas fa-bookmark"></i>
+                      <i class="far fa-bookmark"></i>
+                  </button>
+                  <button>Book Now</button>
+              </div>
+          </div>
+      </div>
+      <div class="card">
+            <div class="card-image">
+                <img src="logo6.avif" alt="Salon 4">
+            </div>
+            <div class="card-content">
+                <div class="card-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span>3/5</span>
+                </div>
+                <h2>Beajin beauty salon</h2>
+                <div class="card-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>0.2 km away</span>
+                </div>
+                <div class="card-actions">
+                    <button class="save-btn">
+                        <i class="fas fa-bookmark"></i>
+                        <i class="far fa-bookmark"></i>
+                    </button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-container">
+      <div class="card">
+          <div class="card-image">
+              <img src="logo7.avif" alt="Salon 1">
+          </div>
+          <div class="card-content">
+              <div class="card-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span>4/5</span>
+              </div>
+              <h2>Kaleido Hair</h2>
+              <div class="card-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>1 km away</span>
+              </div>
+              <div class="card-actions">
+                  <button class="save-btn">
+                      <i class="fas fa-bookmark"></i>
+                      <i class="far fa-bookmark"></i>
+                  </button>
+                  <button>Book Now</button>
+              </div>
+          </div>
+      </div>
+      <div class="card">
+          <div class="card-image">
+              <img src="logo8.avif" alt="Salon 2">
+          </div>
+          <div class="card-content">
+              <div class="card-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+                  <span>3.5/5</span>
+              </div>
+              <h2>Beauty garden ladies salon</h2>
+              <div class="card-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>2km away</span>
+              </div>
+              <div class="card-actions">
+                  <button class="save-btn">
+                      <i class="fas fa-bookmark"></i>
+                      <i class="far fa-bookmark"></i>
+                  </button>
+                  <button>Book Now</button>
+              </div>
+          </div>
+      </div>
+      <div class="card">
+          <div class="card-image">
+              <img src="logo9.avif" alt="Salon 3">
+          </div>
+          <div class="card-content">
+              <div class="card-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span>2.5/5</span>
+              </div>
+              <h2>Ellisa</h2>
+              <div class="card-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>2.8 km away</span>
+              </div>
+              <div class="card-actions">
+                  <button class="save-btn">
+                      <i class="fas fa-bookmark"></i>
+                      <i class="far fa-bookmark"></i>
+                  </button>
+                  <button>Book Now</button>
+              </div>
+          </div>
+      </div>
+      <div class="card">
+          <div class="card-image">
+              <img src="logo10.avif" alt="Salon 4">
+          </div>
+          <div class="card-content">
+              <div class="card-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span>4/5</span>
+              </div>
+              <h2>Wisdom and wisdom hair care</h2>
+              <div class="card-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>0.5 km away</span>
+              </div>
+              <div class="card-actions">
+                  <button class="save-btn">
+                      <i class="fas fa-bookmark"></i>
+                      <i class="far fa-bookmark"></i>
+                  </button>
+                  <button>Book Now</button>
+              </div>
+          </div>
+      </div>
+      <div class="card">
+        <div class="card-image">
+            <img src="logo11.avif" alt="Salon 4">
+        </div>
+        <div class="card-content">
+            <div class="card-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="far fa-star"></i>
+                <span>3.5/5</span>
+            </div>
+            <h2>Natural Girl salon</h2>
+            <div class="card-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>1.1 km away</span>
+            </div>
+            <div class="card-actions">
+                <button class="save-btn">
+                    <i class="fas fa-bookmark"></i>
+                    <i class="far fa-bookmark"></i>
+                </button>
+                <button>Book Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+          <div class="card-image">
+              <img src="logo12.avif" alt="Salon 4">
+          </div>
+          <div class="card-content">
+              <div class="card-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>4.5/5</span>
+              </div>
+              <h2>OYA salon</h2>
+              <div class="card-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>8 km away</span>
+              </div>
+              <div class="card-actions">
+                  <button class="save-btn">
+                      <i class="fas fa-bookmark"></i>
+                      <i class="far fa-bookmark"></i>
+                  </button>
+                  <button>Book Now</button>
+              </div>
+          </div>
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .signup-container {
+      width: 550px;
+      height: 550px;
+      margin: 110px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+      padding: 15px;
+      margin: 5px 100px;
+      width: 350px;
+      background-color: #f1f1f1;
+      border-radius: 50px;
+      border: white 1px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px;
+      margin: 10px auto;
+      width: 150px;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff7f00;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="signup-container">
+    <h1>Create your account</h1>
+    <form id="signup-form">
+      <div class="input-group">
+        <input type="text" id="name" placeholder="👤 Name" name="name" required>
+      </div>
+      <div class="input-group">
+        <input type="text" id="number" placeholder="🔑 number" name="number" required>
+      </div>
+      <div class="input-group">
+        <input type="email" id="email" placeholder="📧 Email" name="username" required>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" placeholder="🔑 Password" name="password" required>
+      </div>
+      <button id="signupBtn">Sign Up</button>
+      <p style="margin: 10px 260px;">or</p>
+      <p style="margin: 10px 130px;">Do you already have an account?<a href="adminlogin.html"
+          style="color: orange;"><b>Login</b></a></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("signup-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var name = document.getElementById("name").value;
+      var number = document.getElementById("number").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      fetch("http://localhost:3000/adminsignup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          number: number,
+          username: email,
+          password: password
+        })
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error("Signup failed");
+        })
+        .then(data => {
+          alert("Signup successful");
+          window.location.href = "adminprofile.html";
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+    });
+  </script>
+</body>
+
+</html>

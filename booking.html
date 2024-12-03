@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Details</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Include Bootstrap DateTimePicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+    <!-- Include custom styles -->
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        datetimepicker3{
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 500px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        h1 {
+            color: darkorange;
+        }
+
+        #phoneNumber {
+            color: darkorange;
+            font-weight: bold;
+        }
+
+        #serviceSelect {
+            margin-bottom: 10px;
+        }
+
+        #bookAppointment {
+            background-color: darkorange;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Salon Details</h1>
+
+        <div>
+            <h2 id="salonName"></h2>
+            <p id="phoneNumber"></p>
+            <label for="serviceSelect">Select Service:</label>
+            <select id="serviceSelect">
+                <option value="Service">Service</option>
+                <option value="Haircut">Haircut</option>
+                <option value="Shaving">Shaving</option>
+                <option value="Facial">Facial</option>
+                <option value="Threading">Threading</option>
+                <option value="Hair Dye">Hair Dye</option>
+
+
+                <!-- Add more options as needed -->
+            </select>
+            <br>
+            <label for="appointmentTime">Select Appointment Time:</label>
+            <!-- Add the input group for the time picker -->
+            <div class='input-group date' id='datetimepicker3'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+            </div>
+            <br>
+            <button id="bookAppointment">Book Appointment</button>
+        </div>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap DateTimePicker JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script>
+        // Function to parse query parameters from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+    
+        // Get the salon name and place ID from the query parameters
+        const salonName = getQueryParam('salon');
+        const placeId = getQueryParam('placeId');
+    
+        // Display the salon name
+        document.getElementById('salonName').innerText = salonName;
+    
+        // Function to fetch place details using the Google Places API
+        function fetchPlaceDetails(placeId) {
+            const placeDetailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,formatted_phone_number&key=AIzaSyC-NzE9HMnOu9XGrbYIrSQ897hpU4xupUU`;
+            fetch(placeDetailsUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const phoneNumber = data.result.formatted_phone_number;
+                    document.getElementById('phoneNumber').innerText = 'Phone Number: ' + phoneNumber;
+                })
+                .catch(error => console.error('Error fetching place details:', error));
+        }
+    
+        fetchPlaceDetails(placeId);
+    
+        // Initialize the Bootstrap DateTimePicker
+        $('#datetimepicker3 input').datetimepicker({
+            format: 'LT', // 12-hour time format
+        });
+    
+        // Function to handle booking appointment
+        function bookAppointment() {
+            const selectedService = document.getElementById('serviceSelect').value;
+            const selectedTime = $('#datetimepicker3 input').val(); // Get the selected time
+    
+            // Send a POST request to the server to book the appointment
+            fetch('http://localhost:3000/Book', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    service: selectedService,
+                    time: selectedTime,
+                    salonName: salonName
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Display the success message
+                    alert('Appointment booked successfully!');
+                    window.location.href = "end.html";
+
+                    // Clear the form fields if needed
+                    document.getElementById('serviceSelect').value = '';
+                    $('#datetimepicker3 input').val('');
+                } else {
+                    // Display an error message
+                    alert('Failed to book appointment. Please try again later.');
+                }
+            })
+            .catch(error => {
+                console.error('Error booking appointment:', error);
+                alert('Failed to book appointment. Please try again later.');
+            });
+        }
+    
+        // Attach event listener to the book appointment button using jQuery
+        $(document).ready(function(){
+            $('#bookAppointment').on('click', bookAppointment);
+        });
+    </script>
+    
+    
+</body>
+</html>
